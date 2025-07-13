@@ -1,0 +1,198 @@
+body {
+  font-family: sans-serif;
+  background: #f2f2f2;
+  text-align: center;
+  padding: 50px;
+
+
+}
+.container {
+  background: #9f9393;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  display: inline-block;
+}
+input {
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 20px;
+  font-size: 1em;
+}
+#strengthBar {
+  height: 10px;
+  width: 80%;
+  margin: 0 auto 10px;
+  background: #ccc;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+/* Password Strength Checker Styles*/
+
+.password-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px; 
+}
+
+#passwordInput {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+/* Toggle Button */
+#toggleBtn {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #00bfff, #87cefa);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+
+}
+
+#toggleBtn:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+
+/* hhg的css */
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif; 
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  color: #222;
+}
+
+/* Layout Containers */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Header */
+.top-bar {
+  background-color: #000;
+  color: #fff;
+  padding: 15px 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #040404; /* ジムガイド的颜色*/
+  float: left;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.nav-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-menu li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 40px 0;
+  background: #fff;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.workout-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #333;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #6c519b;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e60000;
+}
+
+/* Footer */
+.site-footer {
+  background: #222;
+  color: #ccc;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px;
+}
