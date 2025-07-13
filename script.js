@@ -105,10 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
     buttons.forEach(button => {
     button.addEventListener("click", (e) => {
       // 为每个按钮添加点击事件
-      e.preventDefault(); // 1.阻止<a href="#">默认行为(the default behavior of the <a href="#"> tag)
+      // e.preventDefault(); // 1.阻止<a href="#">默认行为(the default behavior of the <a href="#"> tag)
                            // 2.弹出提示框alert替代跳转
                         
-      alert("Workout details coming soon!");
+     //  alert("Workout details coming soon!");
     });
   });
 });
