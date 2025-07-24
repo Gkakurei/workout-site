@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>2025年 チェックリスト</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    #year-view, #month-view {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    /* 年视图 */
+    .month-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .month-box {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .month-box:hover {
+      background: #e6f7ff;
+    }
+
+    /* 月详细视图 */
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-top: 1rem;
+    }
+
+    .day {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 8px;
+      font-size: 0.75rem;
+      height: 60px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .day.checked {
+      background-color: #c2f0c2;
+    }
+
+    .date-label {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      font-size: 0.65rem;
+      color: #666;
+    }
+
+    #backBtn {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .month-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>📅 2025年 打卡チェックリスト</h1>
+
+  <div id="year-view">
+    <div class="month-grid" id="monthGrid"></div>
+  </div>
+
+  <div id="month-view" style="display:none;">
+    <h2 id="monthTitle">1月</h2>
+    <div class="calendar" id="calendar"></div>
+    <button id="backBtn">← 年間ビューに戻る</button>
+  </div>
+
+  <script>
+    const year = 2025;
+    const monthGrid = document.getElementById("monthGrid");
+    const yearView = document.getElementById("year-view");
+    const monthView = document.getElementById("month-view");
+    const calendar = document.getElementById("calendar");
+    const monthTitle = document.getElementById("monthTitle");
+    const backBtn = document.getElementById("backBtn");
+
+    // 显示全年月份卡片
+    for (let m = 0; m < 12; m++) {
+      const box = document.createElement("div");
+      box.className = "month-box";
+      box.textContent = `${m + 1}月`;
+      box.addEventListener("click", () => {
+        showMonth(m);
+      });
+      monthGrid.appendChild(box);
+    }
+
+    // 点击返回按钮
+    backBtn.addEventListener("click", () => {
+      monthView.style.display = "none";
+      yearView.style.display = "block";
+      calendar.innerHTML = ""; // 清空月份日历
+    });
+
+    // 显示某月日历
+    function showMonth(monthIndex) {
+      const firstDay = new Date(year, monthIndex, 1);
+      const lastDay = new Date(year, monthIndex + 1, 0);
+      const daysInMonth = lastDay.getDate();
+
+      monthTitle.textContent = `${monthIndex + 1}月`;
+      yearView.style.display = "none";
+      monthView.style.display = "block";
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const date = new Date(year, monthIndex, d);
+        const dateStr = date.toISOString().split("T")[0];
+
+        const dayDiv = document.createElement("div");
+        dayDiv.className = "day";
+        dayDiv.setAttribute("data-date", dateStr);
+
+        const label = document.createElement("div");
+        label.className = "date-label";
+        label.textContent = d;
+        dayDiv.appendChild(label);
+
+        // 如果已打卡
+        if (localStorage.getItem("check_" + dateStr) === "true") {
+          dayDiv.classList.add("checked");
+        }
+
+        dayDiv.addEventListener("click", () => {
+          const isChecked = dayDiv.classList.toggle("checked");
+          localStorage.setItem("check_" + dateStr, isChecked ? "true" : "false");
+        });
+
+        calendar.appendChild(dayDiv);
+      }
+    }
+  </script>
+</body>
+</html>
